@@ -1,0 +1,125 @@
+﻿@model IEnumerable<SEPPokemon.Models.Pokemon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbilityOne)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbilityTwo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbilityHidden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Height)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GenderMale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GenderFemale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EvolutionNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EvolutionPosNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EvoultionPathsNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EvolutionPathsTotal)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AbilityOne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AbilityTwo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AbilityHidden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenderMale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenderFemale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EvolutionNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EvolutionPosNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EvoultionPathsNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EvolutionPathsTotal)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PokemonId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PokemonId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PokemonId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
