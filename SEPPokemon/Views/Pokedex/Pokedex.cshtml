@@ -1,4 +1,6 @@
-﻿<html class="bg-other" lang="en">
+﻿@model IEnumerable<SEPPokemon.Models.Pokemon>
+
+<html class="bg-other" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +39,20 @@
     </section>
     <section class="pokedex-grid">
         <div class="content">
-            <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="row">
+                    <div class="column">
+                        <a href="~/Pokedex/info">
+                            <div class="box">
+                                <img src="@Html.DisplayFor(modelitem => item.Image)">
+                                @*<img src="~/images/Bulbasaur.png" />*@
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+            @*<div class="row">
                 <div class="column">
                     <a href="~/Pokedex/info">
                         <div class="box">
@@ -225,7 +240,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>*@
         </div>
     </section>
 
