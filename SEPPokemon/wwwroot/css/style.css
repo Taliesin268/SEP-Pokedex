@@ -13,6 +13,7 @@ font-size: 1em;
 h1
 {
 font-size: 2em;
+
 }
 
 
@@ -32,9 +33,7 @@ background: linear-gradient(
 background-repeat: no-repeat;
 margin-top: 0%;
 background-color: black;
-background-size: cover;
-
-
+background-size:inherit;
 
 }
 /*Footer*/
@@ -196,7 +195,6 @@ transform: rotate(-45deg);
 .search
 {
 width: 100%;
-/*background-image: url(/img/gray.png);*/
 margin-bottom: 2%;
 overflow: hidden;
 }
@@ -341,28 +339,23 @@ padding: 3px;
 
 
 .poke-info-1
-{
-	float: left;
-	width: 50%;
-	text-align: center;
-}
+{float: left;}
 
 .poke-info-2
-{
-	float: right;
-	width: 50%;
-	text-align: center;
+{float: right;}
+
+.poke-info-1, .poke-info-2 {
+    width: 50%;
+    text-align: center;
+    margin: 2% auto;
 }
-
-
 /*Evolution images and arrows*/
-.evolution
-{
-width: 90%;
-margin: 7% auto;
-background-image: url(/img/gback.png);
-border-radius: 10px;
-overflow: hidden;
+.evolution {
+    width: 90%;
+    margin: 7% auto;
+    background-image: url(/img/gback.png);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .evolution h1
@@ -622,9 +615,9 @@ display: inline-block;
 padding: 5px 25px 5px 0px;
 }
 /*sections style*/
-.bg-home{
-    background-size:unset;
-}
+/*.bg-home{
+    background-size:inherit;
+}*/
 .info-main,.search,.slider
 {
 margin-top: 63px;
@@ -645,7 +638,6 @@ margin-top: 63px;
 	width: 100%;
 	text-align: center;
 }
-
 
 }
 @media screen and (max-width:765px) {
