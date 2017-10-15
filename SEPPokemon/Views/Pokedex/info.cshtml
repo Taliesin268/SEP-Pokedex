@@ -1,4 +1,6 @@
-﻿<html class="bg-other" lang="en">
+﻿@model SEPPokemon.Models.Pokemon
+
+<html class="bg-other" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +21,6 @@
             </li>
             <li class="navItem"><a href="~/Pokedex">Home</a></li>
             <li class="navItem"><a href="~/Pokedex/Pokedex">Pokedex</a></li>
-            <li class="navItem"><a href="~/Pokedex/info">Info</a></li>
             <li class="icon">
                 <a href="javascript:void(0);" style="font-size:40px;" onclick="myFunction()">☰</a>
             </li>
@@ -32,18 +33,18 @@
                 <div id="poke1">
                     <div class="content">
                         <img src="~/img/002.png">
-                        <p>#002</p>
+                        <p>[PLACEHOLDER]</p>
                     </div>
                 </div>
                 <div id="poke2">
                     <div class="content">
                         <img src="~/img/004.png">
-                        <p>#004</p>
+                        <p>[PLACEHOLDER]</p>
                     </div>
                 </div>
-                <h1>PokemonName</h1>
-                <p>pokemonNumber</p>
-                <img src="~/img/003.png">
+                <h1>@Html.DisplayFor(model => model.Name)</h1>
+                <p>@Html.DisplayFor(model => model.PokemonId)</p>
+                <img src="@Html.DisplayFor(model => model.Image)">
 
             </div>
 
@@ -55,34 +56,32 @@
         <div class="Description">
             <h2>Description</h2>
             <p>
-                Bulbasaur can be seen napping in bright sunlight.
-                There is a seed on its back. By soaking up the sun's rays,
-                the seed grows progressively larger.
+                @Html.DisplayFor(model => model.Description)
             </p>
         </div>
         <div class="type">
             <h2>Type</h2>
-            <p class="cFire">Fire</p>
-            <p class="cPsyc">Psychic</p>
+            <p class="cFire">[PLACEHOLDER]</p>
+            <p class="cPsyc">[PLACEHOLDER]</p>
         </div>
         <div class="poke-info-1">
             <div class="height">
                 <h2>Height</h2>
-                <p>2'04</p>
+                <p>@Html.DisplayFor(model => model.Height)</p>
             </div>
             <div class="weight">
                 <h2>Weight</h2>
-                <p>15.21lbs</p>
+                <p>@Html.DisplayFor(model => model.Weight)</p>
             </div>
         </div>
         <div class="poke-info-2">
             <div class="abilities">
                 <h2>Abilities</h2>
-                <p>Overgrow</p>
+                <p>@Html.DisplayFor(model => model.AbilityOne) / @Html.DisplayFor(model => model.AbilityTwo) (@Html.DisplayFor(model => model.AbilityHidden))</p>
             </div>
             <div class="gender">
                 <h2>Gender</h2>
-                <p>Male/Female</p>
+                <p>@Html.DisplayFor(model => model.GenderFemale)/@Html.DisplayFor(model => model.GenderMale)</p>
             </div>
         </div>
     </section>
@@ -95,10 +94,10 @@
             <div id="evo">
                 <div class="content-evo">
                     <img src="~/img/001.png">
-                    <p><h1>Bulbasaur</h1>#001</p>
+                    <p><h1>Bulbasaur[P]</h1>#001[P]</p>
                     <div class="type">
-                        <p class="cG">Grass</p>
-                        <p class="cP">Poison</p>
+                        <p class="cG">Grass[P]</p>
+                        <p class="cP">Poison[P]</p>
                     </div>
                 </div>
             </div>
@@ -115,10 +114,10 @@
             <div id="evo">
                 <div class="content-evo">
                     <img src="~/img/002.png">
-                    <p><h1>Ivysaur</h1>#002</p>
+                    <p><h1>Ivysaur[P]</h1>#002[P]</p>
                     <div class="type">
-                        <p class="cB">Bug</p>
-                        <p class="cGhost">Ghost</p>
+                        <p class="cB">Bug[P]</p>
+                        <p class="cGhost">Ghost[P]</p>
                     </div>
                 </div>
             </div>
@@ -136,10 +135,10 @@
             <div id="evo">
                 <div class="content-evo">
                     <img src="~/img/003.png">
-                    <p><h1>Venusaur</h1>#003</p>
+                    <p><h1>Venusaur[P]</h1>#003[P]</p>
                     <div class="type">
-                        <p class="cFight">Fighting</p>
-                        <p class="cFly">Flying</p>
+                        <p class="cFight">Fighting[P]</p>
+                        <p class="cFly">Flying[P]</p>
                     </div>
                 </div>
             </div>

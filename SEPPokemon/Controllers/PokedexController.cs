@@ -23,9 +23,20 @@ namespace SEPPokemon.Controllers
             return View();
         }
 
-        public IActionResult info()
+        public async Task<IActionResult> info(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pokemon = await _context.Pokemon.SingleOrDefaultAsync(m => m.PokemonId == id);
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+
+            return View(pokemon);
         }
 
         public async Task<IActionResult> Pokedex()
