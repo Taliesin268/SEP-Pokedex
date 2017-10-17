@@ -86,8 +86,8 @@
         </div>
         <div class="type">
             <h2>Type</h2>
-            <p class="cFire">[PLACEHOLDER]</p>
-            <p class="cPsyc">[PLACEHOLDER]</p>
+            <p class="cFire">Fire[P]</p>
+            <p class="cPsychic">Psychic[P]</p>
         </div>
         <div class="poke-info-1">
             <div class="height">
@@ -122,8 +122,8 @@
                     <img src="@Html.DisplayFor(item => prev.Image)">
                     <p><h1>@Html.DisplayFor(item => prev.Name)</h1>@Html.DisplayFor(item => prev.PokemonId)</p>
                     <div class="type">
-                        <p class="cG">Grass[P]</p>
-                        <p class="cP">Poison[P]</p>
+                        <p class="cGrass">Grass[P]</p>
+                        <p class="cPoison">Poison[P]</p>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@
                     <img src="@Html.DisplayFor(item => curr.Image)">
                     <p><h1>@Html.DisplayFor(item => curr.Name)</h1>@Html.DisplayFor(item => curr.PokemonId)</p>
                     <div class="type">
-                        <p class="cB">Bug[P]</p>
+                        <p class="cBug">Bug[P]</p>
                         <p class="cGhost">Ghost[P]</p>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                     <img src="@Html.DisplayFor(item => next.Image)">
                     <p><h1>@Html.DisplayFor(item => next.Name)</h1>@Html.DisplayFor(item => next.PokemonId)</p>
                     <div class="type">
-                        <p class="cFight">Fighting[P]</p>
+                        <p class="cFighting">Fighting[P]</p>
                         <p class="cFly">Flying[P]</p>
                     </div>
                 </div>
@@ -178,8 +178,8 @@
                     <img src="@if (prev == null) { @Html.DisplayFor(item => curr.Image); } else { @Html.DisplayFor(item => prev.Image); }">
               <p><h1>@if (prev == null) { @Html.DisplayFor(item => curr.Name); } else { @Html.DisplayFor(item => prev.Name); }</h1>@if (prev == null) { @Html.DisplayFor(item => curr.PokemonId); } else {@Html.DisplayFor(item => prev.PokemonId); }</p>
                     <div class="type">
-                        <p class="cG">Grass</p>
-                        <p class="cP">Poison</p>
+                        <p class="cGrass">Grass</p>
+                        <p class="cPoison">Poison</p>
                     </div>
                 </div>
             </div>

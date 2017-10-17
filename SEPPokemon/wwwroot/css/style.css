@@ -438,40 +438,40 @@ margin: 5% auto;
 
 
 /*type grass*/
-.cG{background-color: green;}
+.cGrass{background-color: green;}
 /*type poison*/
-.cP{background-color: purple;}
+.cPoison{background-color: purple;}
 /*type water*/
-.cW{background-color: #33B8FF;}
+.cWater{background-color: #33B8FF;}
 /*type fire*/
 .cFire{background-color: orange;}
 /*type normal*/
-.cN{background-color: #B7A25E;}
+.cNormal{background-color: #B7A25E;}
 /*type electric*/
-.cE{background-color: #FFE205}
+.cElectric{background-color: #FFE205}
 /*type ice*/
-.cI{background-color: #0DDAC7;}
+.cIce{background-color: #0DDAC7;}
 /*type fighting*/
-.cFight{background-color: #990F0F;}
+.cFighting{background-color: #990F0F;}
 /*type ground*/
 .cGround{background-color: #6B5F05;} 
 /*type flying*/
 .cFly{background-color: #ED74ED;}
 /*type psychic*/
-.cPsyc{background-color: #F20673;}
+.cPsychic{background-color: #F20673;}
 /*type bug*/
-.cB{background-color: #84B403;}
+.cBug{background-color: #84B403;}
 /*type rock*/
-.cR{background-color: #BA9005;}
+.cRock{background-color: #BA9005;}
 /*type ghost*/
 .cGhost{background-color: #8617F4;}
 /*type dragon*/
-.cD{background-color: #3343FF;}
+.cDragon{background-color: #3343FF;}
 
-p .cG,p .cP,p .cW,p .cFire,
-p .cN,p .cE,p .cI,p .cFight,
-p .Ground,p .cFly, p .cPsyc,
-p .cB,p .cR,p .cGhost,p .cD
+p .cGrass,p .cPoison,p .cWater,p .cFire,
+p .cNormal,p .cElectric,p .cIce,p .cFighting,
+p .cGround,p .cFly, p .cPsychic,
+p .cBug,p .cRock,p .cGhost,p .cDragon
 {
 	width: 50%;
 	font-size: 18px;
