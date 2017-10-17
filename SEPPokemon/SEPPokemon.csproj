@@ -17,4 +17,18 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\Bulbasaur.png" />
+    <None Include="wwwroot\images\Eevee.png" />
+    <None Include="wwwroot\images\Espeon.png" />
+    <None Include="wwwroot\images\Glaceon.png" />
+    <None Include="wwwroot\images\Ivysaur.png" />
+    <None Include="wwwroot\images\Jolteon.png" />
+    <None Include="wwwroot\images\Leafeon.png" />
+    <None Include="wwwroot\images\Sylveon.png" />
+    <None Include="wwwroot\images\Umbreon.png" />
+    <None Include="wwwroot\images\Vaporeon.png" />
+    <None Include="wwwroot\images\Venusaur.png" />
+  </ItemGroup>
+
 </Project>

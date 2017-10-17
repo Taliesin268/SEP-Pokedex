@@ -16,10 +16,10 @@ namespace SEPPokemon.Controllers
         public static void Page_Load()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var excel = new ExcelPackage(new FileInfo(@"D:\datafile.xlsx"));
+            var excel = new ExcelPackage(new FileInfo(@"E:\DataSample.xlsx"));
             var dt = excel.ToDataTable();
             var table = "Pokemon";
-            using (var conn = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=INSERT DATABASENAMEHERE;Integrated Security=SSPI"))
+            using (var conn = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=SEPPokemonContext-382b5366-3ed1-43b8-9bdf-f69ee36c3e1e;Integrated Security=SSPI"))
             {
                 var bulkCopy = new SqlBulkCopy(conn);
                 bulkCopy.DestinationTableName = table;

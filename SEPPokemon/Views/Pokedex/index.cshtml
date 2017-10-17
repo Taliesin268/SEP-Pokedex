@@ -5,6 +5,20 @@
 </head>
 <body>
     @*Nav comes from _layout.cshtml*@
+    @<section class="navigation">
+        <ul class="nav">
+            <li class="navItem" id="logo">
+                <a href="~/Pokedex">
+                    <img src="~/img/pokemon-logo.png" alt="logo">
+                </a>
+            </li>
+            <li class="navItem"><a href="~/Pokedex">Home</a></li>
+            <li class="navItem"><a href="~/Pokedex/Pokedex">Pokedex</a></li>            
+            <li class="icon">
+                <a href="javascript:void(0);" style="font-size:40px;" onclick="myFunction()">☰</a>
+            </li>
+        </ul>
+    </section>@
     <section class="home">
         <div class="content">
             <div class="header">
