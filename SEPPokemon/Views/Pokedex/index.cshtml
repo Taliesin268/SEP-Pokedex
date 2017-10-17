@@ -1,16 +1,11 @@
 ﻿<html class="bg-home">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="img\pball.png" type="image/x-icon">
-    <meta name="author" content="Georgina Bailey">
-    <link href="style.css" media="all" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="~/js/site.js"></script>
+    
     <title>Pokemon|Pokedex</title>
 </head>
 <body>
-    <section class="navigation">
+    @*Nav comes from _layout.cshtml*@
+    @<section class="navigation">
         <ul class="nav">
             <li class="navItem" id="logo">
                 <a href="~/Pokedex">
@@ -23,14 +18,18 @@
                 <a href="javascript:void(0);" style="font-size:40px;" onclick="myFunction()">☰</a>
             </li>
         </ul>
-    </section>
+    </section>@
     <section class="home">
         <div class="content">
             <div class="header">
                 <h1>Pokemon Pokedex</h1>
             </div>
+            <div class="sub-header">
+                <h2>Keep track of your pokemon by using our pokedex look up gallary.</h2>
+                 </div>
             <div class="poke-link">
                 <a href="~/Pokedex/Pokedex">See More <i class="arrow right"></i></a>
+                
             </div>
         </div>
     </section>
