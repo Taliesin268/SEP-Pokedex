@@ -396,7 +396,7 @@ margin: 2% auto;
 }
 .two-evo
 {
-display: none;
+display: inline;
 }
 .three-evo
 {
@@ -451,7 +451,7 @@ margin: 5% auto;
 /*type ice*/
 .cI{background-color: #0DDAC7;}
 /*type fighting*/
-.cfight{background-color: #990F0F;}
+.cFight{background-color: #990F0F;}
 /*type ground*/
 .cGround{background-color: #6B5F05;} 
 /*type flying*/

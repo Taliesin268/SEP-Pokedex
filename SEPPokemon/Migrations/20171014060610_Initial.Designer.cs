@@ -11,7 +11,7 @@ using System;
 namespace SEPPokemon.Migrations
 {
     [DbContext(typeof(SEPPokemonContext))]
-    [Migration("20171013075010_Initial")]
+    [Migration("20171014060610_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
