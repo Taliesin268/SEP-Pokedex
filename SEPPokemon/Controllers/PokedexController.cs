@@ -12,6 +12,7 @@ namespace SEPPokemon.Controllers
     public class PokedexController : Controller
     {
         private readonly SEPPokemonContext _context;
+        
 
         public PokedexController(SEPPokemonContext context)
         {
@@ -29,14 +30,21 @@ namespace SEPPokemon.Controllers
             {
                 return NotFound();
             }
+            
+            var pokemon = from p in _context.Pokemon
+                      select p;
 
-            var pokemon = await _context.Pokemon.SingleOrDefaultAsync(m => m.PokemonId == id);
+            ViewData["id"] = id;
+
+            pokemon = pokemon.Where(s => (s.PokemonId == id || s.PokemonId == id + 1 || s.PokemonId == id - 1));
+            pokemon = pokemon.OrderBy(s => s.PokemonId);
+
             if (pokemon == null)
             {
                 return NotFound();
             }
 
-            return View(pokemon);
+            return View(await  pokemon.ToListAsync());
         }
 
         public async Task<IActionResult> Pokedex()

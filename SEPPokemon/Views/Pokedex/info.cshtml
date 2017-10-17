@@ -1,4 +1,28 @@
-﻿@model SEPPokemon.Models.Pokemon
+﻿@model IEnumerable<SEPPokemon.Models.Pokemon>
+
+@{ 
+    Pokemon prev = null;
+    Pokemon next = null;
+    Pokemon curr = null;
+    if (Model.Count() == 3)
+    {
+        prev = Model.ElementAt(0);
+        next = Model.ElementAt(2);
+        curr = Model.ElementAt(1);
+    } else
+    {
+        if(Model.First().PokemonId == (int)ViewData["id"])
+        {
+            curr = Model.First();
+            next = Model.Last();
+        } else
+        {
+            prev = Model.First();
+            curr = Model.Last();
+        }
+
+    }
+}
 
 <html class="bg-other" lang="en">
 <head>
@@ -30,21 +54,27 @@
     <section class="info-main">
         <div class="content">
             <div class="current-pokemon">
+                @if (prev != null)
+                {
                 <div id="poke1">
                     <div class="content">
-                        <img src="~/img/002.png">
-                        <p>[PLACEHOLDER]</p>
+                        <img src="@Html.DisplayFor(item => prev.Image)">
+                        <p>@Html.DisplayFor(item => prev.PokemonId)</p>
                     </div>
                 </div>
+                }
+                @if (next != null)
+                {
                 <div id="poke2">
                     <div class="content">
-                        <img src="~/img/004.png">
-                        <p>[PLACEHOLDER]</p>
+                        <img src="@Html.DisplayFor(item => next.Image)">
+                        <p>@Html.DisplayFor(item => next.PokemonId)</p>
                     </div>
                 </div>
-                <h1>@Html.DisplayFor(model => model.Name)</h1>
-                <p>@Html.DisplayFor(model => model.PokemonId)</p>
-                <img src="@Html.DisplayFor(model => model.Image)">
+                }
+                <h1>@Html.DisplayFor(item => curr.Name)</h1>
+                <p>@Html.DisplayFor(item => curr.PokemonId)</p>
+                <img src="@Html.DisplayFor(item => curr.Image)">
 
             </div>
 
@@ -56,7 +86,7 @@
         <div class="Description">
             <h2>Description</h2>
             <p>
-                @Html.DisplayFor(model => model.Description)
+                @Html.DisplayFor(item => curr.Description)
             </p>
         </div>
         <div class="type">
@@ -67,34 +97,35 @@
         <div class="poke-info-1">
             <div class="height">
                 <h2>Height</h2>
-                <p>@Html.DisplayFor(model => model.Height)</p>
+                <p>@Html.DisplayFor(item => curr.Height)</p>
             </div>
             <div class="weight">
                 <h2>Weight</h2>
-                <p>@Html.DisplayFor(model => model.Weight)</p>
+                <p>@Html.DisplayFor(item => curr.Weight)</p>
             </div>
         </div>
         <div class="poke-info-2">
             <div class="abilities">
                 <h2>Abilities</h2>
-                <p>@Html.DisplayFor(model => model.AbilityOne) / @Html.DisplayFor(model => model.AbilityTwo) (@Html.DisplayFor(model => model.AbilityHidden))</p>
+                <p>@Html.DisplayFor(item => curr.AbilityOne) / @Html.DisplayFor(item => curr.AbilityTwo) (@Html.DisplayFor(item => curr.AbilityHidden))</p>
             </div>
             <div class="gender">
                 <h2>Gender</h2>
-                <p>@Html.DisplayFor(model => model.GenderFemale)/@Html.DisplayFor(model => model.GenderMale)</p>
+                <p>@Html.DisplayFor(item => curr.GenderFemale)/@Html.DisplayFor(item => curr.GenderMale)</p>
             </div>
         </div>
     </section>
 
 
     <section class="evolution">
+        @if(prev != null && next != null) { 
         <h1>Evolutions</h1>
         <div class="three-evo">
             <!-- left evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="~/img/001.png">
-                    <p><h1>Bulbasaur[P]</h1>#001[P]</p>
+                    <img src="@Html.DisplayFor(item => prev.Image)">
+                    <p><h1>@Html.DisplayFor(item => prev.Name)</h1>@Html.DisplayFor(item => prev.PokemonId)</p>
                     <div class="type">
                         <p class="cG">Grass[P]</p>
                         <p class="cP">Poison[P]</p>
@@ -113,8 +144,8 @@
             <!-- Middle evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="~/img/002.png">
-                    <p><h1>Ivysaur[P]</h1>#002[P]</p>
+                    <img src="@Html.DisplayFor(item => curr.Image)">
+                    <p><h1>@Html.DisplayFor(item => curr.Name)</h1>@Html.DisplayFor(item => curr.PokemonId)</p>
                     <div class="type">
                         <p class="cB">Bug[P]</p>
                         <p class="cGhost">Ghost[P]</p>
@@ -134,8 +165,8 @@
             <!-- Right evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="~/img/003.png">
-                    <p><h1>Venusaur[P]</h1>#003[P]</p>
+                    <img src="@Html.DisplayFor(item => next.Image)">
+                    <p><h1>@Html.DisplayFor(item => next.Name)</h1>@Html.DisplayFor(item => next.PokemonId)</p>
                     <div class="type">
                         <p class="cFight">Fighting[P]</p>
                         <p class="cFly">Flying[P]</p>
@@ -144,13 +175,13 @@
             </div>
 
         </div>
-
+        } else {
         <div class="two-evo">
             <!-- left evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="~/img/001.png">
-                    <p><h1>Bulbasaur</h1>#001</p>
+                    <img src="@if (prev == null) { @Html.DisplayFor(item => curr.Image); } else { @Html.DisplayFor(item => prev.Image); }">
+              <p><h1>@if (prev == null) { @Html.DisplayFor(item => curr.Name); } else { @Html.DisplayFor(item => prev.Name); }</h1>@if (prev == null) { @Html.DisplayFor(item => curr.PokemonId); } else {@Html.DisplayFor(item => prev.PokemonId); }</p>
                     <div class="type">
                         <p class="cG">Grass</p>
                         <p class="cP">Poison</p>
@@ -168,8 +199,8 @@
             <!-- Right evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="~/img/003.png">
-                    <p><h1>Venusaur</h1>#003</p>
+                    <img src="@if (next == null) {@Html.DisplayFor(item => curr.Image); } else {@Html.DisplayFor(item => next.Image); }">
+                    <p><h1>@if (next == null) {@Html.DisplayFor(item => curr.Name); } else {@Html.DisplayFor(item => next.Name); }</h1>@if (next == null) {@Html.DisplayFor(item => curr.PokemonId); } else {@Html.DisplayFor(item => next.PokemonId); }</p>
                     <div class="type">
                         <p class="cG">Grass</p>
                         <p class="cP">Poison</p>
@@ -177,6 +208,7 @@
                 </div>
             </div>
         </div>
+        }
 
     </section>
 
