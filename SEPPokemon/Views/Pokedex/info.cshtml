@@ -86,8 +86,11 @@
         </div>
         <div class="type">
             <h2>Type</h2>
-            <p class="cFire">Fire[P]</p>
-            <p class="cPsychic">Psychic[P]</p>
+            <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
+            @if (curr.Type2 != "Null")
+            {
+            <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
+            }
         </div>
         <div class="poke-info-1">
             <div class="height">
@@ -122,8 +125,11 @@
                     <img src="@Html.DisplayFor(item => prev.Image)">
                     <p><h1>@Html.DisplayFor(item => prev.Name)</h1>@Html.DisplayFor(item => prev.PokemonId)</p>
                     <div class="type">
-                        <p class="cGrass">Grass[P]</p>
-                        <p class="cPoison">Poison[P]</p>
+                        <p class="c@(Html.DisplayFor(item => prev.Type1))">@Html.DisplayFor(item => prev.Type1)</p>
+                        @if (prev.Type2 != "Null")
+                        {
+                            <p class="c@(Html.DisplayFor(item => prev.Type2))">@Html.DisplayFor(item => prev.Type2)</p>
+                        }
                     </div>
                 </div>
             </div>
@@ -142,8 +148,11 @@
                     <img src="@Html.DisplayFor(item => curr.Image)">
                     <p><h1>@Html.DisplayFor(item => curr.Name)</h1>@Html.DisplayFor(item => curr.PokemonId)</p>
                     <div class="type">
-                        <p class="cBug">Bug[P]</p>
-                        <p class="cGhost">Ghost[P]</p>
+                        <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
+                        @if (curr.Type2 != "Null")
+                        {
+                            <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
+                        }
                     </div>
                 </div>
             </div>
@@ -163,8 +172,11 @@
                     <img src="@Html.DisplayFor(item => next.Image)">
                     <p><h1>@Html.DisplayFor(item => next.Name)</h1>@Html.DisplayFor(item => next.PokemonId)</p>
                     <div class="type">
-                        <p class="cFighting">Fighting[P]</p>
-                        <p class="cFly">Flying[P]</p>
+                        <p class="c@(Html.DisplayFor(item => next.Type1))">@Html.DisplayFor(item => next.Type1)</p>
+                        @if (next.Type2 != "Null")
+                        {
+                            <p class="c@(Html.DisplayFor(item => next.Type2))">@Html.DisplayFor(item => next.Type2)</p>
+                        }
                     </div>
                 </div>
             </div>
@@ -178,8 +190,22 @@
                     <img src="@if (prev == null) { @Html.DisplayFor(item => curr.Image); } else { @Html.DisplayFor(item => prev.Image); }">
               <p><h1>@if (prev == null) { @Html.DisplayFor(item => curr.Name); } else { @Html.DisplayFor(item => prev.Name); }</h1>@if (prev == null) { @Html.DisplayFor(item => curr.PokemonId); } else {@Html.DisplayFor(item => prev.PokemonId); }</p>
                     <div class="type">
-                        <p class="cGrass">Grass</p>
-                        <p class="cPoison">Poison</p>
+                        @if (prev == null)
+                        {
+                            <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
+                            @if (curr.Type2 != "Null")
+                            {
+                                <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
+                            }
+                        }
+                        else
+                        {
+                            <p class="c@(Html.DisplayFor(item => prev.Type1))">@Html.DisplayFor(item => prev.Type1)</p>
+                            @if (prev.Type2 != "Null")
+                            {
+                                <p class="c@(Html.DisplayFor(item => prev.Type2))">@Html.DisplayFor(item => prev.Type2)</p>
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -197,8 +223,22 @@
                     <img src="@if (next == null) {@Html.DisplayFor(item => curr.Image); } else {@Html.DisplayFor(item => next.Image); }">
                     <p><h1>@if (next == null) {@Html.DisplayFor(item => curr.Name); } else {@Html.DisplayFor(item => next.Name); }</h1>@if (next == null) {@Html.DisplayFor(item => curr.PokemonId); } else {@Html.DisplayFor(item => next.PokemonId); }</p>
                     <div class="type">
-                        <p class="cG">Grass</p>
-                        <p class="cP">Poison</p>
+                        @if (prev == next)
+                        {
+                            <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
+                            @if (curr.Type2 != "Null")
+                            {
+                                <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
+                            }
+                        }
+                        else
+                        {
+                            <p class="c@(Html.DisplayFor(item => next.Type1))">@Html.DisplayFor(item => next.Type1)</p>
+                            @if (next.Type2 != "Null")
+                            {
+                                <p class="c@(Html.DisplayFor(item => next.Type2))">@Html.DisplayFor(item => next.Type2)</p>
+                            }
+                        }
                     </div>
                 </div>
             </div>
