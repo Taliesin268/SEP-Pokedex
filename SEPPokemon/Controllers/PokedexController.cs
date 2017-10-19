@@ -51,5 +51,20 @@ namespace SEPPokemon.Controllers
         {
             return View(await _context.Pokemon.ToListAsync());
         }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pokemon = await _context.Pokemon.SingleOrDefaultAsync(m => m.PokemonId == id);
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+            return View(pokemon);
+        }
     }
 }

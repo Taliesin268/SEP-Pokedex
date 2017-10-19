@@ -14,6 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PokemonId" />
             <div class="form-group">
+                <label asp-for="PokemonNo" class="control-label"></label>
+                <input asp-for="PokemonNo" class="form-control" />
+                <span asp-validation-for="PokemonNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
@@ -37,11 +42,6 @@
                 <label asp-for="Type2" class="control-label"></label>
                 <input asp-for="Type2" class="form-control" />
                 <span asp-validation-for="Type2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PokemonNo" class="control-label"></label>
-                <input asp-for="PokemonNo" class="form-control" />
-                <span asp-validation-for="PokemonNo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Subtitle" class="control-label"></label>
@@ -84,26 +84,6 @@
                 <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EvolutionNo" class="control-label"></label>
-                <input asp-for="EvolutionNo" class="form-control" />
-                <span asp-validation-for="EvolutionNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EvolutionPosNo" class="control-label"></label>
-                <input asp-for="EvolutionPosNo" class="form-control" />
-                <span asp-validation-for="EvolutionPosNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EvoultionPathsNo" class="control-label"></label>
-                <input asp-for="EvoultionPathsNo" class="form-control" />
-                <span asp-validation-for="EvoultionPathsNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EvolutionPathsTotal" class="control-label"></label>
-                <input asp-for="EvolutionPathsTotal" class="form-control" />
-                <span asp-validation-for="EvolutionPathsTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
@@ -111,9 +91,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Pokedex">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
