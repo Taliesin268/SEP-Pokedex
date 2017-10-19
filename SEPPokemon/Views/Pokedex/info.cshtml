@@ -51,27 +51,31 @@
             <div class="current-pokemon">
                 @if (prev != null)
                 {
-                <div id="poke1">
-                    <div class="content">
-                        <img src="@Html.DisplayFor(item => prev.Image)">
-                        <p>@Html.DisplayFor(item => prev.PokemonId)</p>
-                    </div>
-                </div>
+                    <a asp-action="info" asp-route-id="@prev.PokemonId">
+                        <div id="poke1">
+                            <div class="content">
+                                <img src="@Html.DisplayFor(item => prev.Image)">
+                                <p>@Html.DisplayFor(item => prev.PokemonId)</p>
+                            </div>
+                        </div>
+                    </a>
                 }
                 @if (next != null)
                 {
-                <div id="poke2">
-                    <div class="content">
-                        <img src="@Html.DisplayFor(item => next.Image)">
-                        <p>@Html.DisplayFor(item => next.PokemonId)</p>
-                    </div>
-                </div>
+                    <a asp-action="info" asp-route-id="@next.PokemonId">
+                        <div id="poke2">
+                            <div class="content">
+                                <img src="@Html.DisplayFor(item => next.Image)">
+                                <p>@Html.DisplayFor(item => next.PokemonId)</p>
+                            </div>
+                        </div>
+                    </a>
                 }
                 <h1>@Html.DisplayFor(item => curr.Name)</h1>
                 <p>@Html.DisplayFor(item => curr.PokemonId)</p>
                 <img src="@Html.DisplayFor(item => curr.Image)">
 
-            </div>
+</div>
 
         </div>
     </section>
@@ -122,8 +126,11 @@
             <!-- left evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="@Html.DisplayFor(item => prev.Image)">
-                    <p><h1>@Html.DisplayFor(item => prev.Name)</h1>@Html.DisplayFor(item => prev.PokemonId)</p>
+                    <a asp-action="info" asp-route-id="@prev.PokemonId">
+                        <img src="@Html.DisplayFor(item => prev.Image)">
+                    </a>
+                        <p><h1>@Html.DisplayFor(item => prev.Name)</h1>@Html.DisplayFor(item => prev.PokemonId)</p>
+                    
                     <div class="type">
                         <p class="c@(Html.DisplayFor(item => prev.Type1))">@Html.DisplayFor(item => prev.Type1)</p>
                         @if (prev.Type2 != "Null")
@@ -145,8 +152,11 @@
             <!-- Middle evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="@Html.DisplayFor(item => curr.Image)">
-                    <p><h1>@Html.DisplayFor(item => curr.Name)</h1>@Html.DisplayFor(item => curr.PokemonId)</p>
+                    <a asp-action="info" asp-route-id="@curr.PokemonId">
+                        <img src="@Html.DisplayFor(item => curr.Image)">
+                    </a>
+                        <p><h1>@Html.DisplayFor(item => curr.Name)</h1>@Html.DisplayFor(item => curr.PokemonId)</p>
+                    
                     <div class="type">
                         <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
                         @if (curr.Type2 != "Null")
@@ -169,8 +179,11 @@
             <!-- Right evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="@Html.DisplayFor(item => next.Image)">
-                    <p><h1>@Html.DisplayFor(item => next.Name)</h1>@Html.DisplayFor(item => next.PokemonId)</p>
+                    <a asp-action="info" asp-route-id="@next.PokemonId">
+                        <img src="@Html.DisplayFor(item => next.Image)">
+                    </a>
+                        <p><h1>@Html.DisplayFor(item => next.Name)</h1>@Html.DisplayFor(item => next.PokemonId)</p>
+                    
                     <div class="type">
                         <p class="c@(Html.DisplayFor(item => next.Type1))">@Html.DisplayFor(item => next.Type1)</p>
                         @if (next.Type2 != "Null")
@@ -187,8 +200,21 @@
             <!-- left evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="@if (prev == null) { @Html.DisplayFor(item => curr.Image); } else { @Html.DisplayFor(item => prev.Image); }">
-              <p><h1>@if (prev == null) { @Html.DisplayFor(item => curr.Name); } else { @Html.DisplayFor(item => prev.Name); }</h1>@if (prev == null) { @Html.DisplayFor(item => curr.PokemonId); } else {@Html.DisplayFor(item => prev.PokemonId); }</p>
+                    <a asp-action="info" asp-route-id="@if (prev == null) { @curr.PokemonId; } else { @prev.PokemonId;}">
+                        <img src="@if (prev == null) { @Html.DisplayFor(item => curr.Image); } else { @Html.DisplayFor(item => prev.Image); }">
+                    </a>
+                        <p><h1>@if (prev == null)
+                        { @Html.DisplayFor(item => curr.Name);
+                        }
+                        else
+                        { @Html.DisplayFor(item => prev.Name);
+                        }</h1>@if (prev == null)
+                        { @Html.DisplayFor(item => curr.PokemonId);
+                        }
+                        else
+                        {@Html.DisplayFor(item => prev.PokemonId);
+                        }</p>
+                    
                     <div class="type">
                         @if (prev == null)
                         {
@@ -220,8 +246,21 @@
             <!-- Right evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <img src="@if (next == null) {@Html.DisplayFor(item => curr.Image); } else {@Html.DisplayFor(item => next.Image); }">
-                    <p><h1>@if (next == null) {@Html.DisplayFor(item => curr.Name); } else {@Html.DisplayFor(item => next.Name); }</h1>@if (next == null) {@Html.DisplayFor(item => curr.PokemonId); } else {@Html.DisplayFor(item => next.PokemonId); }</p>
+                    <a asp-action="info" asp-route-id="@if (next == null) { @curr.PokemonId; } else { @next.PokemonId; }">
+                        <img src="@if (next == null) {@Html.DisplayFor(item => curr.Image); } else {@Html.DisplayFor(item => next.Image); }">
+                    </a>
+                        <p><h1>@if (next == null)
+                        {@Html.DisplayFor(item => curr.Name);
+                        }
+                        else
+                        {@Html.DisplayFor(item => next.Name);
+                        }</h1>@if (next == null)
+                        {@Html.DisplayFor(item => curr.PokemonId);
+                        }
+                        else
+                        {@Html.DisplayFor(item => next.PokemonId);
+                        }</p>
+                    
                     <div class="type">
                         @if (prev == next)
                         {
