@@ -33,8 +33,7 @@ background: linear-gradient(
 background-repeat: no-repeat;
 margin-top: 0%;
 background-color: black;
-background-size:inherit;
-
+background-size:cover;
 }
 /*Footer*/
 footer{
@@ -263,6 +262,10 @@ height: 200px;
 background-image: url(/img/poke3.png);
 background-size: 200px 200px;
 margin-bottom: 5%;
+}
+.box p{
+    padding-top:3%;
+    color:lightgray;
 }
 .box img
 {
@@ -619,9 +622,9 @@ display: inline-block;
 padding: 5px 25px 5px 0px;
 }
 /*sections style*/
-/*.bg-home{
+.bg-home{
     background-size:inherit;
-}*/
+}
 .info-main,.search,.slider
 {
 margin-top: 63px;

@@ -2,27 +2,33 @@
 
 @{ 
     Pokemon prev = null;
-    Pokemon next = null;
     Pokemon curr = null;
-    if (Model.Count() == 3)
+    Pokemon next = null;
+    int id = (int)ViewData["id"];
+    foreach (Pokemon p in Model)
     {
-        prev = Model.ElementAt(0);
-        next = Model.ElementAt(2);
-        curr = Model.ElementAt(1);
-    } else
+        if (p.PokemonId == id - 1) { prev = p; }
+        if (p.PokemonId == id ) { curr = p; }
+        if (p.PokemonId == id + 1) { next = p; }
+    }
+
+    Pokemon[] family = new Pokemon[curr.EvolutionPathsTotal];
+    int i = 0;
+    if(family.Length < 4)
     {
-        if(Model.First().PokemonId == (int)ViewData["id"])
+        foreach(Pokemon p in Model)
         {
-            curr = Model.First();
-            next = Model.Last();
-        } else
-        {
-            prev = Model.First();
-            curr = Model.Last();
+            if(p.EvolutionNo == curr.EvolutionNo)
+            {
+                family[i] = p;
+                i++;
+            }
+
         }
 
+
     }
-}
+            }
 
 <html class="bg-other" lang="en">
 <head>
@@ -50,7 +56,7 @@
         <div class="content">
             <div class="current-pokemon">
                 @if (prev != null)
-                {
+            {
                     <a asp-action="info" asp-route-id="@prev.PokemonId">
                         <div id="poke1">
                             <div class="content">
@@ -61,7 +67,7 @@
                     </a>
                 }
                 @if (next != null)
-                {
+        {
                     <a asp-action="info" asp-route-id="@next.PokemonId">
                         <div id="poke2">
                             <div class="content">
@@ -92,7 +98,7 @@
             <h2>Type</h2>
             <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
             @if (curr.Type2 != "Null")
-            {
+    {
             <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
             }
         </div>
@@ -120,22 +126,99 @@
 
 
     <section class="evolution">
-        @if(prev != null && next != null) { 
-        <h1>Evolutions</h1>
-        <div class="three-evo">
-            <!-- left evo -->
+        @if(family.Length == 3) {
+            <h1>Evolutions</h1>
+            <div class="three-evo">
+                <!-- left evo -->
+                <div id="evo">
+                    <div class="content-evo">
+                        <a asp-action="info" asp-route-id="@family[0].PokemonId">
+                            <img src="@Html.DisplayFor(item => family[0].Image)">
+                        </a>
+                            <p><h1>@Html.DisplayFor(item => family[0].Name)</h1>@Html.DisplayFor(item => family[0].PokemonId)</p>
+
+
+                        <div class="type">
+                            <p class="c@(Html.DisplayFor(item => family[0].Type1))">@Html.DisplayFor(item => family[0].Type1)</p>
+                            @if (family[0].Type2 != "Null")
+                            {
+                                <p class="c@(Html.DisplayFor(item => family[0].Type2))">@Html.DisplayFor(item => family[0].Type2)</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <div class="right-arrow">
+                        <img src="~/img/arrowRight.png">
+                    </div>
+                    <div class="down-arrow">
+                        <img src="~/img/arrowDown.png">
+                    </div>
+                </div>
+
+                <!-- Middle evo -->
+                <div id="evo">
+                    <div class="content-evo">
+                        <a asp-action="info" asp-route-id="@family[1].PokemonId">
+                            <img src="@Html.DisplayFor(item => family[1].Image)">
+                        </a>
+                            <p><h1>@Html.DisplayFor(item => family[1].Name)</h1>@Html.DisplayFor(item => family[1].PokemonId)</p>
+
+
+                        <div class="type">
+                            <p class="c@(Html.DisplayFor(item => family[1].Type1))">@Html.DisplayFor(item => family[1].Type1)</p>
+                            @if (family[1].Type2 != "Null")
+                            {
+                                <p class="c@(Html.DisplayFor(item => family[1].Type2))">@Html.DisplayFor(item => family[1].Type2)</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <div class="right-arrow">
+                        <img src="~/img/arrowRight.png">
+                    </div>
+                    <div class="down-arrow">
+                        <img src="~/img/arrowDown.png">
+                    </div>
+                </div>
+
+                <!-- Right evo -->
+                <div id="evo">
+                    <div class="content-evo">
+                        <a asp-action="info" asp-route-id="@family[2].PokemonId">
+                            <img src="@Html.DisplayFor(item => family[2].Image)">
+                        </a>
+                            <p><h1>@Html.DisplayFor(item => family[2].Name)</h1>@Html.DisplayFor(item => family[2].PokemonId)</p>
+
+
+                        <div class="type">
+                            <p class="c@(Html.DisplayFor(item => family[2].Type1))">@Html.DisplayFor(item => family[2].Type1)</p>
+                            @if (family[2].Type2 != "Null")
+                            {
+                                <p class="c@(Html.DisplayFor(item => family[2].Type2))">@Html.DisplayFor(item => family[2].Type2)</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        } else if (family.Length == 2) {
+        <div class="two-evo">
             <div id="evo">
                 <div class="content-evo">
-                    <a asp-action="info" asp-route-id="@prev.PokemonId">
-                        <img src="@Html.DisplayFor(item => prev.Image)">
+                    <a asp-action="info" asp-route-id="@family[0].PokemonId">
+                        <img src="@Html.DisplayFor(item => family[0].Image)">
                     </a>
-                        <p><h1>@Html.DisplayFor(item => prev.Name)</h1>@Html.DisplayFor(item => prev.PokemonId)</p>
-                    
+                    <p><h1>@Html.DisplayFor(item => family[0].Name)</h1>@Html.DisplayFor(item => family[0].PokemonId)</p>
+
+
                     <div class="type">
-                        <p class="c@(Html.DisplayFor(item => prev.Type1))">@Html.DisplayFor(item => prev.Type1)</p>
-                        @if (prev.Type2 != "Null")
+                        <p class="c@(Html.DisplayFor(item => family[0].Type1))">@Html.DisplayFor(item => family[0].Type1)</p>
+                        @if (family[0].Type2 != "Null")
                         {
-                            <p class="c@(Html.DisplayFor(item => prev.Type2))">@Html.DisplayFor(item => prev.Type2)</p>
+                            <p class="c@(Html.DisplayFor(item => family[0].Type2))">@Html.DisplayFor(item => family[0].Type2)</p>
                         }
                     </div>
                 </div>
@@ -152,84 +235,55 @@
             <!-- Middle evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <a asp-action="info" asp-route-id="@curr.PokemonId">
-                        <img src="@Html.DisplayFor(item => curr.Image)">
+                    <a asp-action="info" asp-route-id="@family[1].PokemonId">
+                        <img src="@Html.DisplayFor(item => family[1].Image)">
                     </a>
-                        <p><h1>@Html.DisplayFor(item => curr.Name)</h1>@Html.DisplayFor(item => curr.PokemonId)</p>
-                    
+                    <p><h1>@Html.DisplayFor(item => family[1].Name)</h1>@Html.DisplayFor(item => family[1].PokemonId)</p>
+
+
                     <div class="type">
-                        <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
-                        @if (curr.Type2 != "Null")
+                        <p class="c@(Html.DisplayFor(item => family[1].Type1))">@Html.DisplayFor(item => family[1].Type1)</p>
+                        @if (family[1].Type2 != "Null")
                         {
-                            <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
+                            <p class="c@(Html.DisplayFor(item => family[1].Type2))">@Html.DisplayFor(item => family[1].Type2)</p>
                         }
                     </div>
                 </div>
             </div>
 
-            <div class="arrow">
-                <div class="right-arrow">
-                    <img src="~/img/arrowRight.png">
-                </div>
-                <div class="down-arrow">
-                    <img src="~/img/arrowDown.png">
-                </div>
-            </div>
-
-            <!-- Right evo -->
-            <div id="evo">
-                <div class="content-evo">
-                    <a asp-action="info" asp-route-id="@next.PokemonId">
-                        <img src="@Html.DisplayFor(item => next.Image)">
-                    </a>
-                        <p><h1>@Html.DisplayFor(item => next.Name)</h1>@Html.DisplayFor(item => next.PokemonId)</p>
-                    
-                    <div class="type">
-                        <p class="c@(Html.DisplayFor(item => next.Type1))">@Html.DisplayFor(item => next.Type1)</p>
-                        @if (next.Type2 != "Null")
-                        {
-                            <p class="c@(Html.DisplayFor(item => next.Type2))">@Html.DisplayFor(item => next.Type2)</p>
-                        }
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        } else {
-        <div class="two-evo">
             <!-- left evo -->
-            <div id="evo">
+            @*<div id="evo">
                 <div class="content-evo">
-                    <a asp-action="info" asp-route-id="@if (prev == null) { @curr.PokemonId; } else { @prev.PokemonId;}">
-                        <img src="@if (prev == null) { @Html.DisplayFor(item => curr.Image); } else { @Html.DisplayFor(item => prev.Image); }">
+                    <a asp-action="info" asp-route-id="@if (family[0] == null) { @family[1].PokemonId; } else { @family[0].PokemonId;}">
+                        <img src="@if (family[0] == null) { @Html.DisplayFor(item => family[1].Image); } else { @Html.DisplayFor(item => family[0].Image); }">
                     </a>
-                        <p><h1>@if (prev == null)
-                        { @Html.DisplayFor(item => curr.Name);
+                        <p><h1>@if (family[0] == null)
+                        { @Html.DisplayFor(item => family[1].Name);
                         }
                         else
-                        { @Html.DisplayFor(item => prev.Name);
-                        }</h1>@if (prev == null)
-                        { @Html.DisplayFor(item => curr.PokemonId);
-                        }
+                        { @Html.DisplayFor(item => family[0].Name);
+                        }</h1>@if (family[0] == null)
+    { @Html.DisplayFor(item => family[1].PokemonId);
+    }
                         else
-                        {@Html.DisplayFor(item => prev.PokemonId);
+                        {@Html.DisplayFor(item => family[0].PokemonId);
                         }</p>
                     
                     <div class="type">
-                        @if (prev == null)
-                        {
-                            <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
-                            @if (curr.Type2 != "Null")
-                            {
-                                <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
+                        @if (family[0] == null)
+    {
+                            <p class="c@(Html.DisplayFor(item => family[1].Type1))">@Html.DisplayFor(item => family[1].Type1)</p>
+                            @if (family[1].Type2 != "Null")
+    {
+                                <p class="c@(Html.DisplayFor(item => family[1].Type2))">@Html.DisplayFor(item => family[1].Type2)</p>
                             }
                         }
                         else
                         {
-                            <p class="c@(Html.DisplayFor(item => prev.Type1))">@Html.DisplayFor(item => prev.Type1)</p>
-                            @if (prev.Type2 != "Null")
-                            {
-                                <p class="c@(Html.DisplayFor(item => prev.Type2))">@Html.DisplayFor(item => prev.Type2)</p>
+                            <p class="c@(Html.DisplayFor(item => family[0].Type1))">@Html.DisplayFor(item => family[0].Type1)</p>
+                            @if (family[0].Type2 != "Null")
+    {
+                                <p class="c@(Html.DisplayFor(item => family[0].Type2))">@Html.DisplayFor(item => family[0].Type2)</p>
                             }
                         }
                     </div>
@@ -246,41 +300,41 @@
             <!-- Right evo -->
             <div id="evo">
                 <div class="content-evo">
-                    <a asp-action="info" asp-route-id="@if (next == null) { @curr.PokemonId; } else { @next.PokemonId; }">
-                        <img src="@if (next == null) {@Html.DisplayFor(item => curr.Image); } else {@Html.DisplayFor(item => next.Image); }">
+                    <a asp-action="info" asp-route-id="@if (family[2] == null) { @family[1].PokemonId; } else { @family[2].PokemonId; }">
+                        <img src="@if (family[2] == null) {@Html.DisplayFor(item => family[1].Image); } else {@Html.DisplayFor(item => family[2].Image); }">
                     </a>
-                        <p><h1>@if (next == null)
-                        {@Html.DisplayFor(item => curr.Name);
+                        <p><h1>@if (family[2] == null)
+                        {@Html.DisplayFor(item => family[1].Name);
                         }
                         else
-                        {@Html.DisplayFor(item => next.Name);
-                        }</h1>@if (next == null)
-                        {@Html.DisplayFor(item => curr.PokemonId);
-                        }
+                        {@Html.DisplayFor(item => family[2].Name);
+                        }</h1>@if (family[2] == null)
+    {@Html.DisplayFor(item => family[1].PokemonId);
+    }
                         else
-                        {@Html.DisplayFor(item => next.PokemonId);
+                        {@Html.DisplayFor(item => family[2].PokemonId);
                         }</p>
                     
                     <div class="type">
-                        @if (next == null)
-                        {
-                            <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
-                            @if (curr.Type2 != "Null")
-                            {
-                                <p class="c@(Html.DisplayFor(item => curr.Type2))">@Html.DisplayFor(item => curr.Type2)</p>
+                        @if (family[2] == null)
+    {
+                            <p class="c@(Html.DisplayFor(item => family[1].Type1))">@Html.DisplayFor(item => family[1].Type1)</p>
+                            @if (family[1].Type2 != "Null")
+    {
+                                <p class="c@(Html.DisplayFor(item => family[1].Type2))">@Html.DisplayFor(item => family[1].Type2)</p>
                             }
                         }
                         else
                         {
-                            <p class="c@(Html.DisplayFor(item => next.Type1))">@Html.DisplayFor(item => next.Type1)</p>
-                            @if (next.Type2 != "Null")
-                            {
-                                <p class="c@(Html.DisplayFor(item => next.Type2))">@Html.DisplayFor(item => next.Type2)</p>
+                            <p class="c@(Html.DisplayFor(item => family[2].Type1))">@Html.DisplayFor(item => family[2].Type1)</p>
+                            @if (family[2].Type2 != "Null")
+    {
+                                <p class="c@(Html.DisplayFor(item => family[2].Type2))">@Html.DisplayFor(item => family[2].Type2)</p>
                             }
                         }
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
         }
 

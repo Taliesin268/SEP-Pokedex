@@ -36,7 +36,7 @@ namespace SEPPokemon.Controllers
 
             ViewData["id"] = id;
 
-            pokemon = pokemon.Where(s => (s.PokemonId == id || s.PokemonId == id + 1 || s.PokemonId == id - 1));
+            pokemon = pokemon.Where(s => (s.PokemonId == id || s.PokemonId == id + 1 || s.PokemonId == id - 1) || s.PokemonId == id + 2 || s.PokemonId == id-2);
             pokemon = pokemon.OrderBy(s => s.PokemonId);
 
             if (pokemon == null)
