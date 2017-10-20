@@ -24,10 +24,18 @@
     <section class="search">
         <div class="content">
             <div class="search-bar">
-                <form id="search">
+                <div id="search">
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        @Html.TextBox("searchQ", "", new { @placeholder = "Search" }) <br />
+                        @*<input type="submit" value="Filter" />*@
+                    </p>
+                } 
+                @*<form id="search">
                     <input type="search" placeholder="Search">
-                </form>
-
+                </form>*@
+                </div>
             </div>
         </div>
     </section>

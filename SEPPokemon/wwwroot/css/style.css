@@ -198,6 +198,10 @@ width: 100%;
 margin-bottom: 2%;
 overflow: hidden;
 }
+
+input#searchQ {
+    text-align: center;
+}
 /*Search bar*/
 #search input {
 outline: none;

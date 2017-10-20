@@ -52,6 +52,18 @@ namespace SEPPokemon.Controllers
             return View(await _context.Pokemon.ToListAsync());
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Pokedex(string searchQ)
+        {
+            var pokemon = from p in _context.Pokemon
+                          select p;
+
+            if (!String.IsNullOrEmpty(searchQ))
+                pokemon = pokemon.Where(s => s.Name.Contains(searchQ));
+
+            return View(await pokemon.ToListAsync());
+        }
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
