@@ -80,16 +80,12 @@
                 <h1>@Html.DisplayFor(item => curr.Name)</h1>
                 <p>@Html.DisplayFor(item => curr.PokemonId)</p>
                 <img src="@Html.DisplayFor(item => curr.Image)">
-
-</div>
-
+            </div>
         </div>
     </section>
-
-
     <section class="info-middle">
         <div class="Description">
-            <h2>Description</h2>
+            <h2>The @Html.DisplayFor(item => curr.Subtitle) Pokemon</h2>
             <p>
                 @Html.DisplayFor(item => curr.Description)
             </p>
@@ -104,22 +100,36 @@
         </div>
         <div class="poke-info-1">
             <div class="height">
-                <h2>Height</h2>
+                <h2>Height (m)</h2>
                 <p>@Html.DisplayFor(item => curr.Height)</p>
             </div>
             <div class="weight">
-                <h2>Weight</h2>
+                <h2>Weight (kg)</h2>
                 <p>@Html.DisplayFor(item => curr.Weight)</p>
             </div>
         </div>
         <div class="poke-info-2">
             <div class="abilities">
                 <h2>Abilities</h2>
-                <p>@Html.DisplayFor(item => curr.AbilityOne) / @Html.DisplayFor(item => curr.AbilityTwo) (@Html.DisplayFor(item => curr.AbilityHidden))</p>
-            </div>
-            <div class="gender">
+                <p>
+                    @Html.DisplayFor(item => curr.AbilityOne) 
+                    @if (curr.AbilityTwo != "Null") {
+                        <span>/</span>
+                        @Html.DisplayFor(item => curr.AbilityTwo);
+                    } 
+                    @if (curr.AbilityHidden != "Null")
+                    {
+                        <span>(</span>
+                        @Html.DisplayFor(item => curr.AbilityHidden);
+                        <span>)</span>
+                    }
+                </p>
+
+</div>
+
+<div class="gender">
                 <h2>Gender</h2>
-                <p>@Html.DisplayFor(item => curr.GenderFemale)/@Html.DisplayFor(item => curr.GenderMale)</p>
+                <p>@Html.DisplayFor(item => curr.GenderFemale) Female /@Html.DisplayFor(item => curr.GenderMale) Male</p>
             </div>
         </div>
     </section>
@@ -141,7 +151,7 @@
                         <div class="type">
                             <p class="c@(Html.DisplayFor(item => family[0].Type1))">@Html.DisplayFor(item => family[0].Type1)</p>
                             @if (family[0].Type2 != "Null")
-                            {
+                        {
                                 <p class="c@(Html.DisplayFor(item => family[0].Type2))">@Html.DisplayFor(item => family[0].Type2)</p>
                             }
                         </div>
@@ -168,7 +178,7 @@
                         <div class="type">
                             <p class="c@(Html.DisplayFor(item => family[1].Type1))">@Html.DisplayFor(item => family[1].Type1)</p>
                             @if (family[1].Type2 != "Null")
-                            {
+                    {
                                 <p class="c@(Html.DisplayFor(item => family[1].Type2))">@Html.DisplayFor(item => family[1].Type2)</p>
                             }
                         </div>
@@ -196,7 +206,7 @@
                         <div class="type">
                             <p class="c@(Html.DisplayFor(item => family[2].Type1))">@Html.DisplayFor(item => family[2].Type1)</p>
                             @if (family[2].Type2 != "Null")
-                            {
+                {
                                 <p class="c@(Html.DisplayFor(item => family[2].Type2))">@Html.DisplayFor(item => family[2].Type2)</p>
                             }
                         </div>
@@ -217,7 +227,7 @@
                     <div class="type">
                         <p class="c@(Html.DisplayFor(item => family[0].Type1))">@Html.DisplayFor(item => family[0].Type1)</p>
                         @if (family[0].Type2 != "Null")
-                        {
+                {
                             <p class="c@(Html.DisplayFor(item => family[0].Type2))">@Html.DisplayFor(item => family[0].Type2)</p>
                         }
                     </div>
@@ -244,7 +254,7 @@
                     <div class="type">
                         <p class="c@(Html.DisplayFor(item => family[1].Type1))">@Html.DisplayFor(item => family[1].Type1)</p>
                         @if (family[1].Type2 != "Null")
-                        {
+                {
                             <p class="c@(Html.DisplayFor(item => family[1].Type2))">@Html.DisplayFor(item => family[1].Type2)</p>
                         }
                     </div>
