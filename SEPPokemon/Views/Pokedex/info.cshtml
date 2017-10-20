@@ -262,7 +262,7 @@
                         }</p>
                     
                     <div class="type">
-                        @if (prev == next)
+                        @if (next == null)
                         {
                             <p class="c@(Html.DisplayFor(item => curr.Type1))">@Html.DisplayFor(item => curr.Type1)</p>
                             @if (curr.Type2 != "Null")
