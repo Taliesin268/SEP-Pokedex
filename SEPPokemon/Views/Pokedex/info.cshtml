@@ -61,7 +61,7 @@
                         <div id="poke1">
                             <div class="content">
                                 <img src="@Html.DisplayFor(item => prev.Image)">
-                                <p>@Html.DisplayFor(item => prev.PokemonId)</p>
+                                <p>@Html.DisplayFor(item => prev.PokemonNo)</p>
                             </div>
                         </div>
                     </a>
@@ -72,13 +72,13 @@
                         <div id="poke2">
                             <div class="content">
                                 <img src="@Html.DisplayFor(item => next.Image)">
-                                <p>@Html.DisplayFor(item => next.PokemonId)</p>
+                                <p>@Html.DisplayFor(item => next.PokemonNo)</p>
                             </div>
                         </div>
                     </a>
                 }
                 <h1>@Html.DisplayFor(item => curr.Name)</h1>
-                <p>@Html.DisplayFor(item => curr.PokemonId)</p>
+                <p>@Html.DisplayFor(item => curr.PokemonNo)</p>
                 <img src="@Html.DisplayFor(item => curr.Image)">
             </div>
         </div>
@@ -100,12 +100,12 @@
         </div>
         <div class="poke-info-1">
             <div class="height">
-                <h2>Height (m)</h2>
-                <p>@Html.DisplayFor(item => curr.Height)</p>
+                <h2>Height</h2>
+                <p>@Html.DisplayFor(item => curr.Height) m</p>
             </div>
             <div class="weight">
-                <h2>Weight (kg)</h2>
-                <p>@Html.DisplayFor(item => curr.Weight)</p>
+                <h2>Weight</h2>
+                <p>@Html.DisplayFor(item => curr.Weight) kg</p>
             </div>
         </div>
         <div class="poke-info-2">
@@ -114,14 +114,14 @@
                 <p>
                     @Html.DisplayFor(item => curr.AbilityOne) 
                     @if (curr.AbilityTwo != "Null") {
-                        <span>/</span>
+                        <text>/ </text>
                         @Html.DisplayFor(item => curr.AbilityTwo);
                     } 
                     @if (curr.AbilityHidden != "Null")
                     {
-                        <span>(</span>
+                        <text>(</text>
                         @Html.DisplayFor(item => curr.AbilityHidden);
-                        <span>)</span>
+                        <text>)</text>
                     }
                 </p>
 
@@ -129,7 +129,7 @@
 
 <div class="gender">
                 <h2>Gender</h2>
-                <p>@Html.DisplayFor(item => curr.GenderFemale) Female /@Html.DisplayFor(item => curr.GenderMale) Male</p>
+                <p>@Html.DisplayFor(item => curr.GenderFemale)% Female / @Html.DisplayFor(item => curr.GenderMale)% Male</p>
             </div>
         </div>
     </section>
@@ -145,7 +145,7 @@
                         <a asp-action="info" asp-route-id="@family[0].PokemonId">
                             <img src="@Html.DisplayFor(item => family[0].Image)">
                         </a>
-                            <p><h1>@Html.DisplayFor(item => family[0].Name)</h1>@Html.DisplayFor(item => family[0].PokemonId)</p>
+                            <p><h1>@Html.DisplayFor(item => family[0].Name)</h1>@Html.DisplayFor(item => family[0].PokemonNo)</p>
 
 
                         <div class="type">
@@ -172,7 +172,7 @@
                         <a asp-action="info" asp-route-id="@family[1].PokemonId">
                             <img src="@Html.DisplayFor(item => family[1].Image)">
                         </a>
-                            <p><h1>@Html.DisplayFor(item => family[1].Name)</h1>@Html.DisplayFor(item => family[1].PokemonId)</p>
+                            <p><h1>@Html.DisplayFor(item => family[1].Name)</h1>@Html.DisplayFor(item => family[1].PokemonNo)</p>
 
 
                         <div class="type">
@@ -200,7 +200,7 @@
                         <a asp-action="info" asp-route-id="@family[2].PokemonId">
                             <img src="@Html.DisplayFor(item => family[2].Image)">
                         </a>
-                            <p><h1>@Html.DisplayFor(item => family[2].Name)</h1>@Html.DisplayFor(item => family[2].PokemonId)</p>
+                            <p><h1>@Html.DisplayFor(item => family[2].Name)</h1>@Html.DisplayFor(item => family[2].PokemonNo)</p>
 
 
                         <div class="type">
@@ -221,7 +221,7 @@
                     <a asp-action="info" asp-route-id="@family[0].PokemonId">
                         <img src="@Html.DisplayFor(item => family[0].Image)">
                     </a>
-                    <p><h1>@Html.DisplayFor(item => family[0].Name)</h1>@Html.DisplayFor(item => family[0].PokemonId)</p>
+                    <p><h1>@Html.DisplayFor(item => family[0].Name)</h1>@Html.DisplayFor(item => family[0].PokemonNo)</p>
 
 
                     <div class="type">
@@ -248,7 +248,7 @@
                     <a asp-action="info" asp-route-id="@family[1].PokemonId">
                         <img src="@Html.DisplayFor(item => family[1].Image)">
                     </a>
-                    <p><h1>@Html.DisplayFor(item => family[1].Name)</h1>@Html.DisplayFor(item => family[1].PokemonId)</p>
+                    <p><h1>@Html.DisplayFor(item => family[1].Name)</h1>@Html.DisplayFor(item => family[1].PokemonNo)</p>
 
 
                     <div class="type">
