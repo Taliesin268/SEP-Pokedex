@@ -8,10 +8,12 @@ namespace SEPPokemon.Models
     public class Pokemon
     {
         public int PokemonId { get; set; }
+        public int PokemonNo { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
-        public string Type { get; set; }
+        public string Type1 { get; set; }
+        public string Type2 { get; set; }
         public string Subtitle { get; set; }
         public string AbilityOne { get; set; }
         public string AbilityTwo { get; set; }

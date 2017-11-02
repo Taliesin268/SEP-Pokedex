@@ -24,10 +24,18 @@
     <section class="search">
         <div class="content">
             <div class="search-bar">
-                <form id="search">
+                <div id="search">
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        @Html.TextBox("searchQ", "", new { @placeholder = "Search" }) <br />
+                        @*<input type="submit" value="Filter" />*@
+                    </p>
+                } 
+                @*<form id="search">
                     <input type="search" placeholder="Search">
-                </form>
-
+                </form>*@
+                </div>
             </div>
         </div>
     </section>
@@ -37,12 +45,12 @@
             {
                 <div class="row">
                     <div class="column">
-                        <a asp-action="info" asp-route-id="@item.PokemonId">
-                            <div class="box">
-                                <img src="@Html.DisplayFor(modelitem => item.Image)">
-                                @*<img src="~/images/Bulbasaur.png" />*@
-                            </div>
-                        </a>
+                        <div class="box">
+                                <p>@Html.DisplayFor(modelitem => item.Name)</p>
+                                <a asp-action="info" asp-route-id="@item.PokemonId">
+                                    <img src="@Html.DisplayFor(modelitem => item.Image)">
+                                </a>
+                        </div>
                     </div>
                 </div>
             }

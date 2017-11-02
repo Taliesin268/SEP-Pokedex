@@ -36,7 +36,7 @@ namespace SEPPokemon.Controllers
 
             ViewData["id"] = id;
 
-            pokemon = pokemon.Where(s => (s.PokemonId == id || s.PokemonId == id + 1 || s.PokemonId == id - 1));
+            pokemon = pokemon.Where(s => (s.PokemonId == id || s.PokemonId == id + 1 || s.PokemonId == id - 1) || s.PokemonId == id + 2 || s.PokemonId == id-2);
             pokemon = pokemon.OrderBy(s => s.PokemonId);
 
             if (pokemon == null)
@@ -50,6 +50,33 @@ namespace SEPPokemon.Controllers
         public async Task<IActionResult> Pokedex()
         {
             return View(await _context.Pokemon.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Pokedex(string searchQ)
+        {
+            var pokemon = from p in _context.Pokemon
+                          select p;
+
+            if (!String.IsNullOrEmpty(searchQ))
+                pokemon = pokemon.Where(s => s.Name.Contains(searchQ));
+
+            return View(await pokemon.ToListAsync());
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pokemon = await _context.Pokemon.SingleOrDefaultAsync(m => m.PokemonId == id);
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+            return View(pokemon);
         }
     }
 }
